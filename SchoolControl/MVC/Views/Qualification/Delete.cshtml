@@ -1,0 +1,61 @@
+﻿@model Datos.Qualification
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Qualification</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.idQualification)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.idQualification)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SubjectGroup.idSubjectGroup)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SubjectGroup.idSubjectGroup)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Student.name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Student.name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.test)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.test)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.homeWork)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.homeWork)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.conduct)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.conduct)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

@@ -1,0 +1,61 @@
+﻿@model Datos.Student
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Student</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.idStudent)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.idStudent)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Group.idGroup)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Group.idGroup)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.lastName1)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.lastName1)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.lastName2)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.lastName2)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.telephone)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.telephone)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

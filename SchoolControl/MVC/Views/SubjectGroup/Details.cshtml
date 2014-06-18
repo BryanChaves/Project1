@@ -1,0 +1,43 @@
+﻿@model Datos.SubjectGroup
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>SubjectGroup</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.idSubjectGroup)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.idSubjectGroup)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Group.idGroup)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Group.idGroup)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Subject.name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Subject.name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Teacher.name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Teacher.name)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

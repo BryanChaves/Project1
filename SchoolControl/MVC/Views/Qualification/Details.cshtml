@@ -1,0 +1,57 @@
+﻿@model Datos.Qualification
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Qualification</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.idQualification)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.idQualification)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SubjectGroup.idSubjectGroup)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SubjectGroup.idSubjectGroup)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Student.name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Student.name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.test)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.test)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.homeWork)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.homeWork)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.conduct)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.conduct)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

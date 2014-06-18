@@ -1,0 +1,439 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ControlSchoolModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Group">
+          <Key>
+            <PropertyRef Name="idGroup" />
+          </Key>
+          <Property Name="idGroup" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="degree" Type="int" Nullable="false" />
+          <Property Name="year" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Qualification">
+          <Key>
+            <PropertyRef Name="idQualification" />
+          </Key>
+          <Property Name="idQualification" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idSubjectGroup" Type="int" Nullable="false" />
+          <Property Name="idStudent" Type="int" Nullable="false" />
+          <Property Name="test" Type="int" Nullable="false" />
+          <Property Name="homeWork" Type="int" Nullable="false" />
+          <Property Name="conduct" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="idStudent" />
+          </Key>
+          <Property Name="idStudent" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idGroup" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="lastName1" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="lastName2" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="telephone" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Subject">
+          <Key>
+            <PropertyRef Name="idSubject" />
+          </Key>
+          <Property Name="idSubject" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="year" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SubjectGroup">
+          <Key>
+            <PropertyRef Name="idSubjectGroup" />
+          </Key>
+          <Property Name="idSubjectGroup" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idGroup" Type="int" Nullable="false" />
+          <Property Name="idSubject" Type="int" Nullable="false" />
+          <Property Name="idTeacher" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Teacher">
+          <Key>
+            <PropertyRef Name="idTeacher" />
+          </Key>
+          <Property Name="idTeacher" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="lastName1" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="lastName2" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="telephone" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Qualification_Student">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="Qualification" Type="Self.Qualification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="idStudent" />
+            </Principal>
+            <Dependent Role="Qualification">
+              <PropertyRef Name="idStudent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Qualification_SubjectGroup">
+          <End Role="SubjectGroup" Type="Self.SubjectGroup" Multiplicity="1" />
+          <End Role="Qualification" Type="Self.Qualification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubjectGroup">
+              <PropertyRef Name="idSubjectGroup" />
+            </Principal>
+            <Dependent Role="Qualification">
+              <PropertyRef Name="idSubjectGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student">
+          <End Role="Group" Type="Self.Group" Multiplicity="1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="idGroup" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="idGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Subject">
+          <End Role="Subject" Type="Self.Subject" Multiplicity="1" />
+          <End Role="SubjectGroup" Type="Self.SubjectGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="idSubject" />
+            </Principal>
+            <Dependent Role="SubjectGroup">
+              <PropertyRef Name="idSubject" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubjectGroup">
+          <End Role="Group" Type="Self.Group" Multiplicity="1" />
+          <End Role="SubjectGroup" Type="Self.SubjectGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="idGroup" />
+            </Principal>
+            <Dependent Role="SubjectGroup">
+              <PropertyRef Name="idGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Teacher">
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="1" />
+          <End Role="SubjectGroup" Type="Self.SubjectGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="idTeacher" />
+            </Principal>
+            <Dependent Role="SubjectGroup">
+              <PropertyRef Name="idTeacher" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ControlSchoolModelStoreContainer">
+          <EntitySet Name="Group" EntityType="Self.Group" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Qualification" EntityType="Self.Qualification" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Subject" EntityType="Self.Subject" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubjectGroup" EntityType="Self.SubjectGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Teacher" EntityType="Self.Teacher" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Qualification_Student" Association="Self.FK_Qualification_Student">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Qualification" EntitySet="Qualification" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Qualification_SubjectGroup" Association="Self.FK_Qualification_SubjectGroup">
+            <End Role="SubjectGroup" EntitySet="SubjectGroup" />
+            <End Role="Qualification" EntitySet="Qualification" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student" Association="Self.FK_Student">
+            <End Role="Group" EntitySet="Group" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Subject" Association="Self.FK_Subject">
+            <End Role="Subject" EntitySet="Subject" />
+            <End Role="SubjectGroup" EntitySet="SubjectGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubjectGroup" Association="Self.FK_SubjectGroup">
+            <End Role="Group" EntitySet="Group" />
+            <End Role="SubjectGroup" EntitySet="SubjectGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Teacher" Association="Self.FK_Teacher">
+            <End Role="Teacher" EntitySet="Teacher" />
+            <End Role="SubjectGroup" EntitySet="SubjectGroup" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ControlSchoolModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Group">
+          <Key>
+            <PropertyRef Name="idGroup" />
+          </Key>
+          <Property Name="idGroup" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="degree" Type="Int32" Nullable="false" />
+          <Property Name="year" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_Student" FromRole="Group" ToRole="Student" />
+          <NavigationProperty Name="SubjectGroup" Relationship="Self.FK_SubjectGroup" FromRole="Group" ToRole="SubjectGroup" />
+        </EntityType>
+        <EntityType Name="Qualification">
+          <Key>
+            <PropertyRef Name="idQualification" />
+          </Key>
+          <Property Name="idQualification" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idSubjectGroup" Type="Int32" Nullable="false" />
+          <Property Name="idStudent" Type="Int32" Nullable="false" />
+          <Property Name="test" Type="Int32" Nullable="false" />
+          <Property Name="homeWork" Type="Int32" Nullable="false" />
+          <Property Name="conduct" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_Qualification_Student" FromRole="Qualification" ToRole="Student" />
+          <NavigationProperty Name="SubjectGroup" Relationship="Self.FK_Qualification_SubjectGroup" FromRole="Qualification" ToRole="SubjectGroup" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="idStudent" />
+          </Key>
+          <Property Name="idStudent" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idGroup" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lastName1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lastName2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telephone" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Group" Relationship="Self.FK_Student" FromRole="Student" ToRole="Group" />
+          <NavigationProperty Name="Qualification" Relationship="Self.FK_Qualification_Student" FromRole="Student" ToRole="Qualification" />
+        </EntityType>
+        <EntityType Name="Subject">
+          <Key>
+            <PropertyRef Name="idSubject" />
+          </Key>
+          <Property Name="idSubject" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="year" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="SubjectGroup" Relationship="Self.FK_Subject" FromRole="Subject" ToRole="SubjectGroup" />
+        </EntityType>
+        <EntityType Name="SubjectGroup">
+          <Key>
+            <PropertyRef Name="idSubjectGroup" />
+          </Key>
+          <Property Name="idSubjectGroup" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idGroup" Type="Int32" Nullable="false" />
+          <Property Name="idSubject" Type="Int32" Nullable="false" />
+          <Property Name="idTeacher" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Group" Relationship="Self.FK_SubjectGroup" FromRole="SubjectGroup" ToRole="Group" />
+          <NavigationProperty Name="Qualification" Relationship="Self.FK_Qualification_SubjectGroup" FromRole="SubjectGroup" ToRole="Qualification" />
+          <NavigationProperty Name="Subject" Relationship="Self.FK_Subject" FromRole="SubjectGroup" ToRole="Subject" />
+          <NavigationProperty Name="Teacher" Relationship="Self.FK_Teacher" FromRole="SubjectGroup" ToRole="Teacher" />
+        </EntityType>
+        <EntityType Name="Teacher">
+          <Key>
+            <PropertyRef Name="idTeacher" />
+          </Key>
+          <Property Name="idTeacher" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lastName1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lastName2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telephone" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="SubjectGroup" Relationship="Self.FK_Teacher" FromRole="Teacher" ToRole="SubjectGroup" />
+        </EntityType>
+        <Association Name="FK_Student">
+          <End Role="Group" Type="Self.Group" Multiplicity="1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="idGroup" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="idGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubjectGroup">
+          <End Role="Group" Type="Self.Group" Multiplicity="1" />
+          <End Role="SubjectGroup" Type="Self.SubjectGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="idGroup" />
+            </Principal>
+            <Dependent Role="SubjectGroup">
+              <PropertyRef Name="idGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Qualification_Student">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="Qualification" Type="Self.Qualification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="idStudent" />
+            </Principal>
+            <Dependent Role="Qualification">
+              <PropertyRef Name="idStudent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Qualification_SubjectGroup">
+          <End Role="SubjectGroup" Type="Self.SubjectGroup" Multiplicity="1" />
+          <End Role="Qualification" Type="Self.Qualification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubjectGroup">
+              <PropertyRef Name="idSubjectGroup" />
+            </Principal>
+            <Dependent Role="Qualification">
+              <PropertyRef Name="idSubjectGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Subject">
+          <End Role="Subject" Type="Self.Subject" Multiplicity="1" />
+          <End Role="SubjectGroup" Type="Self.SubjectGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="idSubject" />
+            </Principal>
+            <Dependent Role="SubjectGroup">
+              <PropertyRef Name="idSubject" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Teacher">
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="1" />
+          <End Role="SubjectGroup" Type="Self.SubjectGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="idTeacher" />
+            </Principal>
+            <Dependent Role="SubjectGroup">
+              <PropertyRef Name="idTeacher" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ControlSchoolEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Group" EntityType="Self.Group" />
+          <EntitySet Name="Qualification" EntityType="Self.Qualification" />
+          <EntitySet Name="Student" EntityType="Self.Student" />
+          <EntitySet Name="Subject" EntityType="Self.Subject" />
+          <EntitySet Name="SubjectGroup" EntityType="Self.SubjectGroup" />
+          <EntitySet Name="Teacher" EntityType="Self.Teacher" />
+          <AssociationSet Name="FK_Student" Association="Self.FK_Student">
+            <End Role="Group" EntitySet="Group" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubjectGroup" Association="Self.FK_SubjectGroup">
+            <End Role="Group" EntitySet="Group" />
+            <End Role="SubjectGroup" EntitySet="SubjectGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Qualification_Student" Association="Self.FK_Qualification_Student">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Qualification" EntitySet="Qualification" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Qualification_SubjectGroup" Association="Self.FK_Qualification_SubjectGroup">
+            <End Role="SubjectGroup" EntitySet="SubjectGroup" />
+            <End Role="Qualification" EntitySet="Qualification" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Subject" Association="Self.FK_Subject">
+            <End Role="Subject" EntitySet="Subject" />
+            <End Role="SubjectGroup" EntitySet="SubjectGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Teacher" Association="Self.FK_Teacher">
+            <End Role="Teacher" EntitySet="Teacher" />
+            <End Role="SubjectGroup" EntitySet="SubjectGroup" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ControlSchoolModelStoreContainer" CdmEntityContainer="ControlSchoolEntities">
+          <EntitySetMapping Name="Group">
+            <EntityTypeMapping TypeName="ControlSchoolModel.Group">
+              <MappingFragment StoreEntitySet="Group">
+                <ScalarProperty Name="idGroup" ColumnName="idGroup" />
+                <ScalarProperty Name="degree" ColumnName="degree" />
+                <ScalarProperty Name="year" ColumnName="year" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Qualification">
+            <EntityTypeMapping TypeName="ControlSchoolModel.Qualification">
+              <MappingFragment StoreEntitySet="Qualification">
+                <ScalarProperty Name="idQualification" ColumnName="idQualification" />
+                <ScalarProperty Name="idSubjectGroup" ColumnName="idSubjectGroup" />
+                <ScalarProperty Name="idStudent" ColumnName="idStudent" />
+                <ScalarProperty Name="test" ColumnName="test" />
+                <ScalarProperty Name="homeWork" ColumnName="homeWork" />
+                <ScalarProperty Name="conduct" ColumnName="conduct" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Student">
+            <EntityTypeMapping TypeName="ControlSchoolModel.Student">
+              <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="idStudent" ColumnName="idStudent" />
+                <ScalarProperty Name="idGroup" ColumnName="idGroup" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="lastName1" ColumnName="lastName1" />
+                <ScalarProperty Name="lastName2" ColumnName="lastName2" />
+                <ScalarProperty Name="telephone" ColumnName="telephone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subject">
+            <EntityTypeMapping TypeName="ControlSchoolModel.Subject">
+              <MappingFragment StoreEntitySet="Subject">
+                <ScalarProperty Name="idSubject" ColumnName="idSubject" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="year" ColumnName="year" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubjectGroup">
+            <EntityTypeMapping TypeName="ControlSchoolModel.SubjectGroup">
+              <MappingFragment StoreEntitySet="SubjectGroup">
+                <ScalarProperty Name="idSubjectGroup" ColumnName="idSubjectGroup" />
+                <ScalarProperty Name="idGroup" ColumnName="idGroup" />
+                <ScalarProperty Name="idSubject" ColumnName="idSubject" />
+                <ScalarProperty Name="idTeacher" ColumnName="idTeacher" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teacher">
+            <EntityTypeMapping TypeName="ControlSchoolModel.Teacher">
+              <MappingFragment StoreEntitySet="Teacher">
+                <ScalarProperty Name="idTeacher" ColumnName="idTeacher" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="lastName1" ColumnName="lastName1" />
+                <ScalarProperty Name="lastName2" ColumnName="lastName2" />
+                <ScalarProperty Name="telephone" ColumnName="telephone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
