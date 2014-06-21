@@ -1,0 +1,43 @@
+﻿@model Data.Result
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Result</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.id_result)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.id_result)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.id_student)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.id_student)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.id_subject)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.id_subject)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.result1)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.result1)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

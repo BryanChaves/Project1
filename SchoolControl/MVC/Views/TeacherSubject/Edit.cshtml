@@ -1,0 +1,46 @@
+﻿@model Data.TeacherSubject
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>TeacherSubject</legend>
+
+        @Html.HiddenFor(model => model.id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.id_teacher, "Teacher")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("id_teacher", String.Empty)
+            @Html.ValidationMessageFor(model => model.id_teacher)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.id_subject, "Subject")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("id_subject", String.Empty)
+            @Html.ValidationMessageFor(model => model.id_subject)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

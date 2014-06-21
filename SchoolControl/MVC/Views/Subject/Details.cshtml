@@ -1,0 +1,29 @@
+﻿@model Data.Subject
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Subject</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.id_subject)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.id_subject)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.name)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
