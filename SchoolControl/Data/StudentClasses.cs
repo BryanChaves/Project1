@@ -14,9 +14,9 @@ namespace Data
     
     public partial class StudentClasses
     {
-        public int id { get; set; }
-        public int id_student { get; set; }
-        public int id_class { get; set; }
+        public int Id { get; set; }
+        public int StudentId { get; set; }
+        public int ClassId { get; set; }
     
         public virtual Classes Classes { get; set; }
         public virtual Student Student { get; set; }

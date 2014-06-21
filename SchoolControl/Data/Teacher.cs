@@ -20,13 +20,13 @@ namespace Data
             this.TeacherSubject = new HashSet<TeacherSubject>();
         }
     
-        public int id_teacher { get; set; }
-        public string name { get; set; }
-        public string lastname1 { get; set; }
-        public string lastname2 { get; set; }
-        public string gender { get; set; }
-        public int age { get; set; }
-        public int telephone { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Lastname1 { get; set; }
+        public string Lastname2 { get; set; }
+        public string Gender { get; set; }
+        public int Age { get; set; }
+        public int Telephone { get; set; }
     
         public virtual ICollection<Classes> Classes { get; set; }
         public virtual ICollection<TeacherSubject> TeacherSubject { get; set; }

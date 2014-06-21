@@ -40,8 +40,8 @@ namespace MVC.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.id_subject = new SelectList(db.Subject, "id_subject", "name");
-            ViewBag.id_teacher = new SelectList(db.Teacher, "id_teacher", "name");
+            ViewBag.SubjectId = new SelectList(db.Subject, "Id", "Name");
+            ViewBag.TeacherId = new SelectList(db.Teacher, "Id", "Name");
             return View();
         }
 
@@ -59,8 +59,8 @@ namespace MVC.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.id_subject = new SelectList(db.Subject, "id_subject", "name", classes.id_subject);
-            ViewBag.id_teacher = new SelectList(db.Teacher, "id_teacher", "name", classes.id_teacher);
+            ViewBag.SubjectId = new SelectList(db.Subject, "Id", "Name", classes.SubjectId);
+            ViewBag.TeacherId = new SelectList(db.Teacher, "Id", "Name", classes.TeacherId);
             return View(classes);
         }
 
@@ -74,8 +74,8 @@ namespace MVC.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.id_subject = new SelectList(db.Subject, "id_subject", "name", classes.id_subject);
-            ViewBag.id_teacher = new SelectList(db.Teacher, "id_teacher", "name", classes.id_teacher);
+            ViewBag.SubjectId = new SelectList(db.Subject, "Id", "Name", classes.SubjectId);
+            ViewBag.TeacherId = new SelectList(db.Teacher, "Id", "Name", classes.TeacherId);
             return View(classes);
         }
 
@@ -92,8 +92,8 @@ namespace MVC.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.id_subject = new SelectList(db.Subject, "id_subject", "name", classes.id_subject);
-            ViewBag.id_teacher = new SelectList(db.Teacher, "id_teacher", "name", classes.id_teacher);
+            ViewBag.SubjectId = new SelectList(db.Subject, "Id", "Name", classes.SubjectId);
+            ViewBag.TeacherId = new SelectList(db.Teacher, "Id", "Name", classes.TeacherId);
             return View(classes);
         }
 

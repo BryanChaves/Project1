@@ -13,36 +13,30 @@
     <fieldset>
         <legend>Result</legend>
 
+        @Html.HiddenFor(model => model.Id)
+
         <div class="editor-label">
-            @Html.LabelFor(model => model.id_result)
+            @Html.LabelFor(model => model.StudentId)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.id_result)
-            @Html.ValidationMessageFor(model => model.id_result)
+            @Html.EditorFor(model => model.StudentId)
+            @Html.ValidationMessageFor(model => model.StudentId)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.id_student)
+            @Html.LabelFor(model => model.SubjectId)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.id_student)
-            @Html.ValidationMessageFor(model => model.id_student)
+            @Html.EditorFor(model => model.SubjectId)
+            @Html.ValidationMessageFor(model => model.SubjectId)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.id_subject)
+            @Html.LabelFor(model => model.Result1)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.id_subject)
-            @Html.ValidationMessageFor(model => model.id_subject)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.result1)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.result1)
-            @Html.ValidationMessageFor(model => model.result1)
+            @Html.EditorFor(model => model.Result1)
+            @Html.ValidationMessageFor(model => model.Result1)
         </div>
 
         <p>

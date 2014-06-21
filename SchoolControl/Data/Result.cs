@@ -19,10 +19,10 @@ namespace Data
             this.StudentSubject = new HashSet<StudentSubject>();
         }
     
-        public int id_result { get; set; }
-        public int id_student { get; set; }
-        public int id_subject { get; set; }
-        public int result1 { get; set; }
+        public int Id { get; set; }
+        public int StudentId { get; set; }
+        public int SubjectId { get; set; }
+        public int Result1 { get; set; }
     
         public virtual ICollection<StudentSubject> StudentSubject { get; set; }
     }

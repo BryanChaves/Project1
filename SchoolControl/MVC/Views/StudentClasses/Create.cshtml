@@ -14,19 +14,19 @@
         <legend>StudentClasses</legend>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.id_student, "Student")
+            @Html.LabelFor(model => model.StudentId, "Student")
         </div>
         <div class="editor-field">
-            @Html.DropDownList("id_student", String.Empty)
-            @Html.ValidationMessageFor(model => model.id_student)
+            @Html.DropDownList("StudentId", String.Empty)
+            @Html.ValidationMessageFor(model => model.StudentId)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.id_class, "Classes")
+            @Html.LabelFor(model => model.ClassId, "Classes")
         </div>
         <div class="editor-field">
-            @Html.DropDownList("id_class", String.Empty)
-            @Html.ValidationMessageFor(model => model.id_class)
+            @Html.DropDownList("ClassId", String.Empty)
+            @Html.ValidationMessageFor(model => model.ClassId)
         </div>
 
         <p>

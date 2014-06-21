@@ -13,20 +13,14 @@
     <fieldset>
         <legend>Subject</legend>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.id_subject)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.id_subject)
-            @Html.ValidationMessageFor(model => model.id_subject)
-        </div>
+        @Html.HiddenFor(model => model.Id)
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.name)
+            @Html.LabelFor(model => model.Name)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.name)
-            @Html.ValidationMessageFor(model => model.name)
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
         </div>
 
         <p>

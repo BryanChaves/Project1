@@ -13,30 +13,30 @@
     <fieldset>
         <legend>StudentSubject</legend>
 
-        @Html.HiddenFor(model => model.id)
+        @Html.HiddenFor(model => model.Id)
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.id_student, "Student")
+            @Html.LabelFor(model => model.StudentId, "Student")
         </div>
         <div class="editor-field">
-            @Html.DropDownList("id_student", String.Empty)
-            @Html.ValidationMessageFor(model => model.id_student)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.id_subject, "Subject")
-        </div>
-        <div class="editor-field">
-            @Html.DropDownList("id_subject", String.Empty)
-            @Html.ValidationMessageFor(model => model.id_subject)
+            @Html.DropDownList("StudentId", String.Empty)
+            @Html.ValidationMessageFor(model => model.StudentId)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.id_result, "Result")
+            @Html.LabelFor(model => model.SubjectId, "Subject")
         </div>
         <div class="editor-field">
-            @Html.DropDownList("id_result", String.Empty)
-            @Html.ValidationMessageFor(model => model.id_result)
+            @Html.DropDownList("SubjectId", String.Empty)
+            @Html.ValidationMessageFor(model => model.SubjectId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ResultId, "Result")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("ResultId", String.Empty)
+            @Html.ValidationMessageFor(model => model.ResultId)
         </div>
 
         <p>

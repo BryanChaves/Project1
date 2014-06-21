@@ -14,10 +14,10 @@ namespace Data
     
     public partial class StudentSubject
     {
-        public int id { get; set; }
-        public int id_student { get; set; }
-        public int id_subject { get; set; }
-        public int id_result { get; set; }
+        public int Id { get; set; }
+        public int StudentId { get; set; }
+        public int SubjectId { get; set; }
+        public int ResultId { get; set; }
     
         public virtual Result Result { get; set; }
         public virtual Student Student { get; set; }

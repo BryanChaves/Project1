@@ -14,9 +14,9 @@ namespace Data
     
     public partial class TeacherSubject
     {
-        public int id { get; set; }
-        public int id_teacher { get; set; }
-        public int id_subject { get; set; }
+        public int Id { get; set; }
+        public int TeacherId { get; set; }
+        public int SubjectId { get; set; }
     
         public virtual Subject Subject { get; set; }
         public virtual Teacher Teacher { get; set; }

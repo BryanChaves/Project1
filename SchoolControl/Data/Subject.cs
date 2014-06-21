@@ -21,8 +21,8 @@ namespace Data
             this.TeacherSubject = new HashSet<TeacherSubject>();
         }
     
-        public int id_subject { get; set; }
-        public string name { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
     
         public virtual ICollection<Classes> Classes { get; set; }
         public virtual ICollection<StudentSubject> StudentSubject { get; set; }

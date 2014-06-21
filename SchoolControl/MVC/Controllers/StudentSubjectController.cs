@@ -40,9 +40,9 @@ namespace MVC.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.id_result = new SelectList(db.Result, "id_result", "id_result");
-            ViewBag.id_student = new SelectList(db.Student, "id_student", "name");
-            ViewBag.id_subject = new SelectList(db.Subject, "id_subject", "name");
+            ViewBag.ResultId = new SelectList(db.Result, "Id", "Id");
+            ViewBag.StudentId = new SelectList(db.Student, "Id", "Name");
+            ViewBag.SubjectId = new SelectList(db.Subject, "Id", "Name");
             return View();
         }
 
@@ -60,9 +60,9 @@ namespace MVC.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.id_result = new SelectList(db.Result, "id_result", "id_result", studentsubject.id_result);
-            ViewBag.id_student = new SelectList(db.Student, "id_student", "name", studentsubject.id_student);
-            ViewBag.id_subject = new SelectList(db.Subject, "id_subject", "name", studentsubject.id_subject);
+            ViewBag.ResultId = new SelectList(db.Result, "Id", "Id", studentsubject.ResultId);
+            ViewBag.StudentId = new SelectList(db.Student, "Id", "Name", studentsubject.StudentId);
+            ViewBag.SubjectId = new SelectList(db.Subject, "Id", "Name", studentsubject.SubjectId);
             return View(studentsubject);
         }
 
@@ -76,9 +76,9 @@ namespace MVC.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.id_result = new SelectList(db.Result, "id_result", "id_result", studentsubject.id_result);
-            ViewBag.id_student = new SelectList(db.Student, "id_student", "name", studentsubject.id_student);
-            ViewBag.id_subject = new SelectList(db.Subject, "id_subject", "name", studentsubject.id_subject);
+            ViewBag.ResultId = new SelectList(db.Result, "Id", "Id", studentsubject.ResultId);
+            ViewBag.StudentId = new SelectList(db.Student, "Id", "Name", studentsubject.StudentId);
+            ViewBag.SubjectId = new SelectList(db.Subject, "Id", "Name", studentsubject.SubjectId);
             return View(studentsubject);
         }
 
@@ -95,9 +95,9 @@ namespace MVC.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.id_result = new SelectList(db.Result, "id_result", "id_result", studentsubject.id_result);
-            ViewBag.id_student = new SelectList(db.Student, "id_student", "name", studentsubject.id_student);
-            ViewBag.id_subject = new SelectList(db.Subject, "id_subject", "name", studentsubject.id_subject);
+            ViewBag.ResultId = new SelectList(db.Result, "Id", "Id", studentsubject.ResultId);
+            ViewBag.StudentId = new SelectList(db.Student, "Id", "Name", studentsubject.StudentId);
+            ViewBag.SubjectId = new SelectList(db.Subject, "Id", "Name", studentsubject.SubjectId);
             return View(studentsubject);
         }
 

@@ -10,20 +10,20 @@
     <legend>TeacherSubject</legend>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Teacher.name)
+         @Html.DisplayNameFor(model => model.Teacher.Name)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Teacher.name)
+        @Html.DisplayFor(model => model.Teacher.Name)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Subject.name)
+         @Html.DisplayNameFor(model => model.Subject.Name)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Subject.name)
+        @Html.DisplayFor(model => model.Subject.Name)
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.id }) |
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
