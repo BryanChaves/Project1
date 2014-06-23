@@ -16,14 +16,12 @@ namespace Data
     {
         public Result()
         {
-            this.StudentSubject = new HashSet<StudentSubject>();
+            this.ResultSubjectStudent = new HashSet<ResultSubjectStudent>();
         }
     
         public int Id { get; set; }
-        public int StudentId { get; set; }
-        public int SubjectId { get; set; }
         public int Result1 { get; set; }
     
-        public virtual ICollection<StudentSubject> StudentSubject { get; set; }
+        public virtual ICollection<ResultSubjectStudent> ResultSubjectStudent { get; set; }
     }
 }

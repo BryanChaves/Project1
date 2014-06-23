@@ -18,7 +18,7 @@ namespace MVC.Controllers
 
         public ActionResult Index()
         {
-            var studentsubject = db.StudentSubject.Include(s => s.Result).Include(s => s.Student).Include(s => s.Subject);
+            var studentsubject = db.StudentSubject.Include(s => s.Student1).Include(s => s.Subject1);
             return View(studentsubject.ToList());
         }
 
@@ -40,9 +40,8 @@ namespace MVC.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.ResultId = new SelectList(db.Result, "Id", "Id");
-            ViewBag.StudentId = new SelectList(db.Student, "Id", "Name");
-            ViewBag.SubjectId = new SelectList(db.Subject, "Id", "Name");
+            ViewBag.Student = new SelectList(db.Student, "Identification", "Name");
+            ViewBag.Subject = new SelectList(db.Subject, "Subject1", "Subject1");
             return View();
         }
 
@@ -60,9 +59,8 @@ namespace MVC.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ResultId = new SelectList(db.Result, "Id", "Id", studentsubject.ResultId);
-            ViewBag.StudentId = new SelectList(db.Student, "Id", "Name", studentsubject.StudentId);
-            ViewBag.SubjectId = new SelectList(db.Subject, "Id", "Name", studentsubject.SubjectId);
+            ViewBag.Student = new SelectList(db.Student, "Identification", "Name", studentsubject.Student);
+            ViewBag.Subject = new SelectList(db.Subject, "Subject1", "Subject1", studentsubject.Subject);
             return View(studentsubject);
         }
 
@@ -76,9 +74,8 @@ namespace MVC.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.ResultId = new SelectList(db.Result, "Id", "Id", studentsubject.ResultId);
-            ViewBag.StudentId = new SelectList(db.Student, "Id", "Name", studentsubject.StudentId);
-            ViewBag.SubjectId = new SelectList(db.Subject, "Id", "Name", studentsubject.SubjectId);
+            ViewBag.Student = new SelectList(db.Student, "Identification", "Name", studentsubject.Student);
+            ViewBag.Subject = new SelectList(db.Subject, "Subject1", "Subject1", studentsubject.Subject);
             return View(studentsubject);
         }
 
@@ -95,9 +92,8 @@ namespace MVC.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ResultId = new SelectList(db.Result, "Id", "Id", studentsubject.ResultId);
-            ViewBag.StudentId = new SelectList(db.Student, "Id", "Name", studentsubject.StudentId);
-            ViewBag.SubjectId = new SelectList(db.Subject, "Id", "Name", studentsubject.SubjectId);
+            ViewBag.Student = new SelectList(db.Student, "Identification", "Name", studentsubject.Student);
+            ViewBag.Subject = new SelectList(db.Subject, "Subject1", "Subject1", studentsubject.Subject);
             return View(studentsubject);
         }
 

@@ -4,24 +4,27 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="f5445eff82f2496ca98f91aaef84507c" Name="Diagram1">
-        <EntityTypeShape EntityType="ControlSchoolModel.Classes" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ControlSchoolModel.Result" Width="1.5" PointX="0.75" PointY="8.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="ControlSchoolModel.Student" Width="1.5" PointX="0.75" PointY="11.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="ControlSchoolModel.StudentClasses" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ControlSchoolModel.StudentSubject" Width="1.5" PointX="3" PointY="2" IsExpanded="true" />
-        <EntityTypeShape EntityType="ControlSchoolModel.Subject" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ControlSchoolModel.Teacher" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ControlSchoolModel.TeacherSubject" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
-        <AssociationConnector Association="ControlSchoolModel.fk_Classes_SubjectId" ManuallyRouted="false" />
-        <AssociationConnector Association="ControlSchoolModel.fk_Classes_TeacherId" ManuallyRouted="false" />
-        <AssociationConnector Association="ControlSchoolModel.fk_StudentClasses_ClassId" ManuallyRouted="false" />
-        <AssociationConnector Association="ControlSchoolModel.fk_StudentSubject_ResultId" ManuallyRouted="false" />
-        <AssociationConnector Association="ControlSchoolModel.fk_StudentClasses_StudentId" ManuallyRouted="false" />
-        <AssociationConnector Association="ControlSchoolModel.fk_StudentSubject_StudentId" ManuallyRouted="false" />
-        <AssociationConnector Association="ControlSchoolModel.fk_StudentSubject_SubjectId" ManuallyRouted="false" />
-        <AssociationConnector Association="ControlSchoolModel.fk_TeacherSubject_SubjectId" ManuallyRouted="false" />
-        <AssociationConnector Association="ControlSchoolModel.fk_TeacherSubject_TeacherId" ManuallyRouted="false" />
+      <Diagram DiagramId="f471a577fba2473eac1d2802f06e2b01" Name="Diagram1">
+        <EntityTypeShape EntityType="ControlSchoolModel.Level" Width="1.5" PointX="0.75" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ControlSchoolModel.Result" Width="1.5" PointX="0.75" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ControlSchoolModel.ResultSubjectStudent" Width="1.5" PointX="3" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ControlSchoolModel.Section" Width="1.5" PointX="0.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ControlSchoolModel.SectionLevel" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ControlSchoolModel.Student" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ControlSchoolModel.StudentLevel" Width="1.5" PointX="3" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="ControlSchoolModel.StudentSection" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ControlSchoolModel.StudentSubject" Width="1.5" PointX="6" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ControlSchoolModel.Subject" Width="1.5" PointX="0.75" PointY="13" IsExpanded="true" />
+        <AssociationConnector Association="ControlSchoolModel.FK_SectionLevel_Level" ManuallyRouted="false" />
+        <AssociationConnector Association="ControlSchoolModel.FK_ResultSubjectStudent_Result" ManuallyRouted="false" />
+        <AssociationConnector Association="ControlSchoolModel.FK_ResultSubjectStudent_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="ControlSchoolModel.FK_ResultSubjectStudent_Subject" ManuallyRouted="false" />
+        <AssociationConnector Association="ControlSchoolModel.FK_SectionLevel_Section" ManuallyRouted="false" />
+        <AssociationConnector Association="ControlSchoolModel.FK_StudentSection_Section" ManuallyRouted="false" />
+        <AssociationConnector Association="ControlSchoolModel.FK_SectionLevel_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="ControlSchoolModel.FK_StudentSection_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="ControlSchoolModel.FK_StudentSubject_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="ControlSchoolModel.FK_StudentSubject_Subject" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

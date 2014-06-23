@@ -25,13 +25,15 @@ namespace Data
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<Classes> Classes { get; set; }
+        public DbSet<Level> Level { get; set; }
         public DbSet<Result> Result { get; set; }
+        public DbSet<ResultSubjectStudent> ResultSubjectStudent { get; set; }
+        public DbSet<Section> Section { get; set; }
+        public DbSet<SectionLevel> SectionLevel { get; set; }
         public DbSet<Student> Student { get; set; }
-        public DbSet<StudentClasses> StudentClasses { get; set; }
+        public DbSet<StudentLevel> StudentLevel { get; set; }
+        public DbSet<StudentSection> StudentSection { get; set; }
         public DbSet<StudentSubject> StudentSubject { get; set; }
         public DbSet<Subject> Subject { get; set; }
-        public DbSet<Teacher> Teacher { get; set; }
-        public DbSet<TeacherSubject> TeacherSubject { get; set; }
     }
 }

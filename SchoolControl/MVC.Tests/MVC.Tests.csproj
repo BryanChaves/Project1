@@ -6,7 +6,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{69E381C4-1C49-4157-AE0B-9CFD2592BD9F}</ProjectGuid>
+    <ProjectGuid>{40A8942E-DE8D-4BE5-9611-B35E1AE06A52}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MVC.Tests</RootNamespace>
@@ -124,7 +124,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MVC\MVC.csproj">
-      <Project>{053CBAE3-7DE9-4E2D-BD51-6917EB8470C6}</Project>
+      <Project>{96F5A758-8B45-4CB4-AAD3-6DF2A1B526EE}</Project>
       <Name>MVC</Name>
     </ProjectReference>
   </ItemGroup>

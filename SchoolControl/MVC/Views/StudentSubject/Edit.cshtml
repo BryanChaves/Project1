@@ -16,27 +16,19 @@
         @Html.HiddenFor(model => model.Id)
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.StudentId, "Student")
+            @Html.LabelFor(model => model.Student, "Student1")
         </div>
         <div class="editor-field">
-            @Html.DropDownList("StudentId", String.Empty)
-            @Html.ValidationMessageFor(model => model.StudentId)
+            @Html.DropDownList("Student", String.Empty)
+            @Html.ValidationMessageFor(model => model.Student)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.SubjectId, "Subject")
+            @Html.LabelFor(model => model.Subject, "Subject1")
         </div>
         <div class="editor-field">
-            @Html.DropDownList("SubjectId", String.Empty)
-            @Html.ValidationMessageFor(model => model.SubjectId)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.ResultId, "Result")
-        </div>
-        <div class="editor-field">
-            @Html.DropDownList("ResultId", String.Empty)
-            @Html.ValidationMessageFor(model => model.ResultId)
+            @Html.DropDownList("Subject", String.Empty)
+            @Html.ValidationMessageFor(model => model.Subject)
         </div>
 
         <p>

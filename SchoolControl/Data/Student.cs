@@ -16,11 +16,14 @@ namespace Data
     {
         public Student()
         {
-            this.StudentClasses = new HashSet<StudentClasses>();
+            this.ResultSubjectStudent = new HashSet<ResultSubjectStudent>();
+            this.StudentLevel = new HashSet<StudentLevel>();
+            this.StudentSection = new HashSet<StudentSection>();
             this.StudentSubject = new HashSet<StudentSubject>();
         }
     
         public int Id { get; set; }
+        public int Identification { get; set; }
         public string Name { get; set; }
         public string Lastname1 { get; set; }
         public string Lastname2 { get; set; }
@@ -28,7 +31,9 @@ namespace Data
         public int Age { get; set; }
         public int Telephone { get; set; }
     
-        public virtual ICollection<StudentClasses> StudentClasses { get; set; }
+        public virtual ICollection<ResultSubjectStudent> ResultSubjectStudent { get; set; }
+        public virtual ICollection<StudentLevel> StudentLevel { get; set; }
+        public virtual ICollection<StudentSection> StudentSection { get; set; }
         public virtual ICollection<StudentSubject> StudentSubject { get; set; }
     }
 }

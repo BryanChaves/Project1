@@ -1,0 +1,29 @@
+﻿@model Data.SectionLevel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>SectionLevel</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Level1.Level1)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Level1.Level1)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Section1.Section1)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Section1.Section1)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -16,16 +16,14 @@ namespace Data
     {
         public Subject()
         {
-            this.Classes = new HashSet<Classes>();
+            this.ResultSubjectStudent = new HashSet<ResultSubjectStudent>();
             this.StudentSubject = new HashSet<StudentSubject>();
-            this.TeacherSubject = new HashSet<TeacherSubject>();
         }
     
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string Subject1 { get; set; }
     
-        public virtual ICollection<Classes> Classes { get; set; }
+        public virtual ICollection<ResultSubjectStudent> ResultSubjectStudent { get; set; }
         public virtual ICollection<StudentSubject> StudentSubject { get; set; }
-        public virtual ICollection<TeacherSubject> TeacherSubject { get; set; }
     }
 }

@@ -5,231 +5,258 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="ControlSchoolModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Classes">
+        <EntityType Name="Level">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="Level" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="TeacherId" Type="int" Nullable="false" />
-          <Property Name="SubjectId" Type="int" Nullable="false" />
+          <Property Name="Level" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Result">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="Result" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="StudentId" Type="int" Nullable="false" />
-          <Property Name="SubjectId" Type="int" Nullable="false" />
           <Property Name="Result" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="Student">
+        <EntityType Name="ResultSubjectStudent">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="Lastname1" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="Lastname2" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Student" Type="int" Nullable="false" />
+          <Property Name="Subject" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Result" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Section">
+          <Key>
+            <PropertyRef Name="Section" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Section" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SectionLevel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Level" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Section" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="Identification" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Identification" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Lastname1" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Lastname2" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Gender" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="Age" Type="int" Nullable="false" />
           <Property Name="Telephone" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="StudentClasses">
+        <EntityType Name="StudentLevel">
+          <Key>
+            <PropertyRef Name="Level" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Student" Type="int" Nullable="false" />
+          <Property Name="Level" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StudentSection">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="StudentId" Type="int" Nullable="false" />
-          <Property Name="ClassId" Type="int" Nullable="false" />
+          <Property Name="Student" Type="int" Nullable="false" />
+          <Property Name="Section" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="StudentSubject">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="StudentId" Type="int" Nullable="false" />
-          <Property Name="SubjectId" Type="int" Nullable="false" />
-          <Property Name="ResultId" Type="int" Nullable="false" />
+          <Property Name="Student" Type="int" Nullable="false" />
+          <Property Name="Subject" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Subject">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="Subject" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Subject" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <EntityType Name="Teacher">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="15" Nullable="false" />
-          <Property Name="Lastname1" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="Lastname2" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="Gender" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="Age" Type="int" Nullable="false" />
-          <Property Name="Telephone" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="TeacherSubject">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="TeacherId" Type="int" Nullable="false" />
-          <Property Name="SubjectId" Type="int" Nullable="false" />
-        </EntityType>
-        <Association Name="fk_Classes_SubjectId">
-          <End Role="Subject" Type="Self.Subject" Multiplicity="1" />
-          <End Role="Classes" Type="Self.Classes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Subject">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Classes">
-              <PropertyRef Name="SubjectId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_Classes_TeacherId">
-          <End Role="Teacher" Type="Self.Teacher" Multiplicity="1" />
-          <End Role="Classes" Type="Self.Classes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Teacher">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Classes">
-              <PropertyRef Name="TeacherId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_StudentClasses_ClassId">
-          <End Role="Classes" Type="Self.Classes" Multiplicity="1" />
-          <End Role="StudentClasses" Type="Self.StudentClasses" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Classes">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="StudentClasses">
-              <PropertyRef Name="ClassId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_StudentClasses_StudentId">
-          <End Role="Student" Type="Self.Student" Multiplicity="1" />
-          <End Role="StudentClasses" Type="Self.StudentClasses" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Student">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="StudentClasses">
-              <PropertyRef Name="StudentId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_StudentSubject_ResultId">
+        <Association Name="FK_ResultSubjectStudent_Result">
           <End Role="Result" Type="Self.Result" Multiplicity="1" />
-          <End Role="StudentSubject" Type="Self.StudentSubject" Multiplicity="*" />
+          <End Role="ResultSubjectStudent" Type="Self.ResultSubjectStudent" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Result">
-              <PropertyRef Name="Id" />
+              <PropertyRef Name="Result" />
             </Principal>
-            <Dependent Role="StudentSubject">
-              <PropertyRef Name="ResultId" />
+            <Dependent Role="ResultSubjectStudent">
+              <PropertyRef Name="Result" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_StudentSubject_StudentId">
+        <Association Name="FK_ResultSubjectStudent_Student">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="ResultSubjectStudent" Type="Self.ResultSubjectStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Identification" />
+            </Principal>
+            <Dependent Role="ResultSubjectStudent">
+              <PropertyRef Name="Student" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResultSubjectStudent_Subject">
+          <End Role="Subject" Type="Self.Subject" Multiplicity="1" />
+          <End Role="ResultSubjectStudent" Type="Self.ResultSubjectStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="Subject" />
+            </Principal>
+            <Dependent Role="ResultSubjectStudent">
+              <PropertyRef Name="Subject" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SectionLevel_Level">
+          <End Role="Level" Type="Self.Level" Multiplicity="1" />
+          <End Role="SectionLevel" Type="Self.SectionLevel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Level">
+              <PropertyRef Name="Level" />
+            </Principal>
+            <Dependent Role="SectionLevel">
+              <PropertyRef Name="Level" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SectionLevel_Section">
+          <End Role="Section" Type="Self.Section" Multiplicity="1" />
+          <End Role="SectionLevel" Type="Self.SectionLevel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Section">
+              <PropertyRef Name="Section" />
+            </Principal>
+            <Dependent Role="SectionLevel">
+              <PropertyRef Name="Section" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SectionLevel_Student">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="StudentLevel" Type="Self.StudentLevel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Identification" />
+            </Principal>
+            <Dependent Role="StudentLevel">
+              <PropertyRef Name="Student" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentSection_Section">
+          <End Role="Section" Type="Self.Section" Multiplicity="1" />
+          <End Role="StudentSection" Type="Self.StudentSection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Section">
+              <PropertyRef Name="Section" />
+            </Principal>
+            <Dependent Role="StudentSection">
+              <PropertyRef Name="Section" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentSection_Student">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="StudentSection" Type="Self.StudentSection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Identification" />
+            </Principal>
+            <Dependent Role="StudentSection">
+              <PropertyRef Name="Student" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentSubject_Student">
           <End Role="Student" Type="Self.Student" Multiplicity="1" />
           <End Role="StudentSubject" Type="Self.StudentSubject" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Student">
-              <PropertyRef Name="Id" />
+              <PropertyRef Name="Identification" />
             </Principal>
             <Dependent Role="StudentSubject">
-              <PropertyRef Name="StudentId" />
+              <PropertyRef Name="Student" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_StudentSubject_SubjectId">
+        <Association Name="FK_StudentSubject_Subject">
           <End Role="Subject" Type="Self.Subject" Multiplicity="1" />
           <End Role="StudentSubject" Type="Self.StudentSubject" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Subject">
-              <PropertyRef Name="Id" />
+              <PropertyRef Name="Subject" />
             </Principal>
             <Dependent Role="StudentSubject">
-              <PropertyRef Name="SubjectId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_TeacherSubject_SubjectId">
-          <End Role="Subject" Type="Self.Subject" Multiplicity="1" />
-          <End Role="TeacherSubject" Type="Self.TeacherSubject" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Subject">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="TeacherSubject">
-              <PropertyRef Name="SubjectId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_TeacherSubject_TeacherId">
-          <End Role="Teacher" Type="Self.Teacher" Multiplicity="1" />
-          <End Role="TeacherSubject" Type="Self.TeacherSubject" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Teacher">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="TeacherSubject">
-              <PropertyRef Name="TeacherId" />
+              <PropertyRef Name="Subject" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="ControlSchoolModelStoreContainer">
-          <EntitySet Name="Classes" EntityType="Self.Classes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Level" EntityType="Self.Level" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Result" EntityType="Self.Result" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ResultSubjectStudent" EntityType="Self.ResultSubjectStudent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Section" EntityType="Self.Section" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SectionLevel" EntityType="Self.SectionLevel" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="StudentClasses" EntityType="Self.StudentClasses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentLevel" EntityType="Self.StudentLevel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentSection" EntityType="Self.StudentSection" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StudentSubject" EntityType="Self.StudentSubject" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Subject" EntityType="Self.Subject" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Teacher" EntityType="Self.Teacher" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="TeacherSubject" EntityType="Self.TeacherSubject" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="fk_Classes_SubjectId" Association="Self.fk_Classes_SubjectId">
-            <End Role="Subject" EntitySet="Subject" />
-            <End Role="Classes" EntitySet="Classes" />
-          </AssociationSet>
-          <AssociationSet Name="fk_Classes_TeacherId" Association="Self.fk_Classes_TeacherId">
-            <End Role="Teacher" EntitySet="Teacher" />
-            <End Role="Classes" EntitySet="Classes" />
-          </AssociationSet>
-          <AssociationSet Name="fk_StudentClasses_ClassId" Association="Self.fk_StudentClasses_ClassId">
-            <End Role="Classes" EntitySet="Classes" />
-            <End Role="StudentClasses" EntitySet="StudentClasses" />
-          </AssociationSet>
-          <AssociationSet Name="fk_StudentClasses_StudentId" Association="Self.fk_StudentClasses_StudentId">
-            <End Role="Student" EntitySet="Student" />
-            <End Role="StudentClasses" EntitySet="StudentClasses" />
-          </AssociationSet>
-          <AssociationSet Name="fk_StudentSubject_ResultId" Association="Self.fk_StudentSubject_ResultId">
+          <AssociationSet Name="FK_ResultSubjectStudent_Result" Association="Self.FK_ResultSubjectStudent_Result">
             <End Role="Result" EntitySet="Result" />
-            <End Role="StudentSubject" EntitySet="StudentSubject" />
+            <End Role="ResultSubjectStudent" EntitySet="ResultSubjectStudent" />
           </AssociationSet>
-          <AssociationSet Name="fk_StudentSubject_StudentId" Association="Self.fk_StudentSubject_StudentId">
+          <AssociationSet Name="FK_ResultSubjectStudent_Student" Association="Self.FK_ResultSubjectStudent_Student">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="ResultSubjectStudent" EntitySet="ResultSubjectStudent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResultSubjectStudent_Subject" Association="Self.FK_ResultSubjectStudent_Subject">
+            <End Role="Subject" EntitySet="Subject" />
+            <End Role="ResultSubjectStudent" EntitySet="ResultSubjectStudent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SectionLevel_Level" Association="Self.FK_SectionLevel_Level">
+            <End Role="Level" EntitySet="Level" />
+            <End Role="SectionLevel" EntitySet="SectionLevel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SectionLevel_Section" Association="Self.FK_SectionLevel_Section">
+            <End Role="Section" EntitySet="Section" />
+            <End Role="SectionLevel" EntitySet="SectionLevel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SectionLevel_Student" Association="Self.FK_SectionLevel_Student">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="StudentLevel" EntitySet="StudentLevel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentSection_Section" Association="Self.FK_StudentSection_Section">
+            <End Role="Section" EntitySet="Section" />
+            <End Role="StudentSection" EntitySet="StudentSection" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentSection_Student" Association="Self.FK_StudentSection_Student">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="StudentSection" EntitySet="StudentSection" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentSubject_Student" Association="Self.FK_StudentSubject_Student">
             <End Role="Student" EntitySet="Student" />
             <End Role="StudentSubject" EntitySet="StudentSubject" />
           </AssociationSet>
-          <AssociationSet Name="fk_StudentSubject_SubjectId" Association="Self.fk_StudentSubject_SubjectId">
+          <AssociationSet Name="FK_StudentSubject_Subject" Association="Self.FK_StudentSubject_Subject">
             <End Role="Subject" EntitySet="Subject" />
             <End Role="StudentSubject" EntitySet="StudentSubject" />
-          </AssociationSet>
-          <AssociationSet Name="fk_TeacherSubject_SubjectId" Association="Self.fk_TeacherSubject_SubjectId">
-            <End Role="Subject" EntitySet="Subject" />
-            <End Role="TeacherSubject" EntitySet="TeacherSubject" />
-          </AssociationSet>
-          <AssociationSet Name="fk_TeacherSubject_TeacherId" Association="Self.fk_TeacherSubject_TeacherId">
-            <End Role="Teacher" EntitySet="Teacher" />
-            <End Role="TeacherSubject" EntitySet="TeacherSubject" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -237,249 +264,278 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ControlSchoolModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Classes">
+        <EntityType Name="Level">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="Level1" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TeacherId" Type="Int32" Nullable="false" />
-          <Property Name="SubjectId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Subject" Relationship="Self.fk_Classes_SubjectId" FromRole="Classes" ToRole="Subject" />
-          <NavigationProperty Name="Teacher" Relationship="Self.fk_Classes_TeacherId" FromRole="Classes" ToRole="Teacher" />
-          <NavigationProperty Name="StudentClasses" Relationship="Self.fk_StudentClasses_ClassId" FromRole="Classes" ToRole="StudentClasses" />
+          <Property Name="Level1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="SectionLevel" Relationship="Self.FK_SectionLevel_Level" FromRole="Level" ToRole="SectionLevel" />
         </EntityType>
         <EntityType Name="Result">
           <Key>
+            <PropertyRef Name="Result1" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Result1" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ResultSubjectStudent" Relationship="Self.FK_ResultSubjectStudent_Result" FromRole="Result" ToRole="ResultSubjectStudent" />
+        </EntityType>
+        <EntityType Name="ResultSubjectStudent">
+          <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="StudentId" Type="Int32" Nullable="false" />
-          <Property Name="SubjectId" Type="Int32" Nullable="false" />
-          <Property Name="Result1" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="StudentSubject" Relationship="Self.fk_StudentSubject_ResultId" FromRole="Result" ToRole="StudentSubject" />
+          <Property Name="Student" Type="Int32" Nullable="false" />
+          <Property Name="Subject" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Result" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Result1" Relationship="Self.FK_ResultSubjectStudent_Result" FromRole="ResultSubjectStudent" ToRole="Result" />
+          <NavigationProperty Name="Student1" Relationship="Self.FK_ResultSubjectStudent_Student" FromRole="ResultSubjectStudent" ToRole="Student" />
+          <NavigationProperty Name="Subject1" Relationship="Self.FK_ResultSubjectStudent_Subject" FromRole="ResultSubjectStudent" ToRole="Subject" />
+        </EntityType>
+        <EntityType Name="Section">
+          <Key>
+            <PropertyRef Name="Section1" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Section1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="SectionLevel" Relationship="Self.FK_SectionLevel_Section" FromRole="Section" ToRole="SectionLevel" />
+          <NavigationProperty Name="StudentSection" Relationship="Self.FK_StudentSection_Section" FromRole="Section" ToRole="StudentSection" />
+        </EntityType>
+        <EntityType Name="SectionLevel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Level" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Section" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Level1" Relationship="Self.FK_SectionLevel_Level" FromRole="SectionLevel" ToRole="Level" />
+          <NavigationProperty Name="Section1" Relationship="Self.FK_SectionLevel_Section" FromRole="SectionLevel" ToRole="Section" />
         </EntityType>
         <EntityType Name="Student">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="Identification" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Lastname1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Lastname2" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Identification" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Lastname1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Lastname2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Gender" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Age" Type="Int32" Nullable="false" />
           <Property Name="Telephone" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="StudentClasses" Relationship="Self.fk_StudentClasses_StudentId" FromRole="Student" ToRole="StudentClasses" />
-          <NavigationProperty Name="StudentSubject" Relationship="Self.fk_StudentSubject_StudentId" FromRole="Student" ToRole="StudentSubject" />
+          <NavigationProperty Name="ResultSubjectStudent" Relationship="Self.FK_ResultSubjectStudent_Student" FromRole="Student" ToRole="ResultSubjectStudent" />
+          <NavigationProperty Name="StudentLevel" Relationship="Self.FK_SectionLevel_Student" FromRole="Student" ToRole="StudentLevel" />
+          <NavigationProperty Name="StudentSection" Relationship="Self.FK_StudentSection_Student" FromRole="Student" ToRole="StudentSection" />
+          <NavigationProperty Name="StudentSubject" Relationship="Self.FK_StudentSubject_Student" FromRole="Student" ToRole="StudentSubject" />
         </EntityType>
-        <EntityType Name="StudentClasses">
+        <EntityType Name="StudentLevel">
+          <Key>
+            <PropertyRef Name="Level" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Student" Type="Int32" Nullable="false" />
+          <Property Name="Level" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Student1" Relationship="Self.FK_SectionLevel_Student" FromRole="StudentLevel" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="StudentSection">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="StudentId" Type="Int32" Nullable="false" />
-          <Property Name="ClassId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Classes" Relationship="Self.fk_StudentClasses_ClassId" FromRole="StudentClasses" ToRole="Classes" />
-          <NavigationProperty Name="Student" Relationship="Self.fk_StudentClasses_StudentId" FromRole="StudentClasses" ToRole="Student" />
+          <Property Name="Student" Type="Int32" Nullable="false" />
+          <Property Name="Section" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Section1" Relationship="Self.FK_StudentSection_Section" FromRole="StudentSection" ToRole="Section" />
+          <NavigationProperty Name="Student1" Relationship="Self.FK_StudentSection_Student" FromRole="StudentSection" ToRole="Student" />
         </EntityType>
         <EntityType Name="StudentSubject">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="StudentId" Type="Int32" Nullable="false" />
-          <Property Name="SubjectId" Type="Int32" Nullable="false" />
-          <Property Name="ResultId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Result" Relationship="Self.fk_StudentSubject_ResultId" FromRole="StudentSubject" ToRole="Result" />
-          <NavigationProperty Name="Student" Relationship="Self.fk_StudentSubject_StudentId" FromRole="StudentSubject" ToRole="Student" />
-          <NavigationProperty Name="Subject" Relationship="Self.fk_StudentSubject_SubjectId" FromRole="StudentSubject" ToRole="Subject" />
+          <Property Name="Student" Type="Int32" Nullable="false" />
+          <Property Name="Subject" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Student1" Relationship="Self.FK_StudentSubject_Student" FromRole="StudentSubject" ToRole="Student" />
+          <NavigationProperty Name="Subject1" Relationship="Self.FK_StudentSubject_Subject" FromRole="StudentSubject" ToRole="Subject" />
         </EntityType>
         <EntityType Name="Subject">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="Subject1" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Classes" Relationship="Self.fk_Classes_SubjectId" FromRole="Subject" ToRole="Classes" />
-          <NavigationProperty Name="StudentSubject" Relationship="Self.fk_StudentSubject_SubjectId" FromRole="Subject" ToRole="StudentSubject" />
-          <NavigationProperty Name="TeacherSubject" Relationship="Self.fk_TeacherSubject_SubjectId" FromRole="Subject" ToRole="TeacherSubject" />
+          <Property Name="Subject1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ResultSubjectStudent" Relationship="Self.FK_ResultSubjectStudent_Subject" FromRole="Subject" ToRole="ResultSubjectStudent" />
+          <NavigationProperty Name="StudentSubject" Relationship="Self.FK_StudentSubject_Subject" FromRole="Subject" ToRole="StudentSubject" />
         </EntityType>
-        <EntityType Name="Teacher">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Lastname1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Lastname2" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Gender" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Age" Type="Int32" Nullable="false" />
-          <Property Name="Telephone" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Classes" Relationship="Self.fk_Classes_TeacherId" FromRole="Teacher" ToRole="Classes" />
-          <NavigationProperty Name="TeacherSubject" Relationship="Self.fk_TeacherSubject_TeacherId" FromRole="Teacher" ToRole="TeacherSubject" />
-        </EntityType>
-        <EntityType Name="TeacherSubject">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TeacherId" Type="Int32" Nullable="false" />
-          <Property Name="SubjectId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Subject" Relationship="Self.fk_TeacherSubject_SubjectId" FromRole="TeacherSubject" ToRole="Subject" />
-          <NavigationProperty Name="Teacher" Relationship="Self.fk_TeacherSubject_TeacherId" FromRole="TeacherSubject" ToRole="Teacher" />
-        </EntityType>
-        <Association Name="fk_Classes_SubjectId">
-          <End Role="Subject" Type="Self.Subject" Multiplicity="1" />
-          <End Role="Classes" Type="Self.Classes" Multiplicity="*" />
+        <Association Name="FK_SectionLevel_Level">
+          <End Role="Level" Type="Self.Level" Multiplicity="1" />
+          <End Role="SectionLevel" Type="Self.SectionLevel" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Subject">
-              <PropertyRef Name="Id" />
+            <Principal Role="Level">
+              <PropertyRef Name="Level1" />
             </Principal>
-            <Dependent Role="Classes">
-              <PropertyRef Name="SubjectId" />
+            <Dependent Role="SectionLevel">
+              <PropertyRef Name="Level" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_Classes_TeacherId">
-          <End Role="Teacher" Type="Self.Teacher" Multiplicity="1" />
-          <End Role="Classes" Type="Self.Classes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Teacher">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Classes">
-              <PropertyRef Name="TeacherId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_StudentClasses_ClassId">
-          <End Role="Classes" Type="Self.Classes" Multiplicity="1" />
-          <End Role="StudentClasses" Type="Self.StudentClasses" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Classes">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="StudentClasses">
-              <PropertyRef Name="ClassId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_StudentSubject_ResultId">
+        <Association Name="FK_ResultSubjectStudent_Result">
           <End Role="Result" Type="Self.Result" Multiplicity="1" />
-          <End Role="StudentSubject" Type="Self.StudentSubject" Multiplicity="*" />
+          <End Role="ResultSubjectStudent" Type="Self.ResultSubjectStudent" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Result">
-              <PropertyRef Name="Id" />
+              <PropertyRef Name="Result1" />
             </Principal>
-            <Dependent Role="StudentSubject">
-              <PropertyRef Name="ResultId" />
+            <Dependent Role="ResultSubjectStudent">
+              <PropertyRef Name="Result" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_StudentClasses_StudentId">
+        <Association Name="FK_ResultSubjectStudent_Student">
           <End Role="Student" Type="Self.Student" Multiplicity="1" />
-          <End Role="StudentClasses" Type="Self.StudentClasses" Multiplicity="*" />
+          <End Role="ResultSubjectStudent" Type="Self.ResultSubjectStudent" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Student">
-              <PropertyRef Name="Id" />
+              <PropertyRef Name="Identification" />
             </Principal>
-            <Dependent Role="StudentClasses">
-              <PropertyRef Name="StudentId" />
+            <Dependent Role="ResultSubjectStudent">
+              <PropertyRef Name="Student" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_StudentSubject_StudentId">
+        <Association Name="FK_ResultSubjectStudent_Subject">
+          <End Role="Subject" Type="Self.Subject" Multiplicity="1" />
+          <End Role="ResultSubjectStudent" Type="Self.ResultSubjectStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="Subject1" />
+            </Principal>
+            <Dependent Role="ResultSubjectStudent">
+              <PropertyRef Name="Subject" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SectionLevel_Section">
+          <End Role="Section" Type="Self.Section" Multiplicity="1" />
+          <End Role="SectionLevel" Type="Self.SectionLevel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Section">
+              <PropertyRef Name="Section1" />
+            </Principal>
+            <Dependent Role="SectionLevel">
+              <PropertyRef Name="Section" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentSection_Section">
+          <End Role="Section" Type="Self.Section" Multiplicity="1" />
+          <End Role="StudentSection" Type="Self.StudentSection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Section">
+              <PropertyRef Name="Section1" />
+            </Principal>
+            <Dependent Role="StudentSection">
+              <PropertyRef Name="Section" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SectionLevel_Student">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="StudentLevel" Type="Self.StudentLevel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Identification" />
+            </Principal>
+            <Dependent Role="StudentLevel">
+              <PropertyRef Name="Student" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentSection_Student">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="StudentSection" Type="Self.StudentSection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Identification" />
+            </Principal>
+            <Dependent Role="StudentSection">
+              <PropertyRef Name="Student" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentSubject_Student">
           <End Role="Student" Type="Self.Student" Multiplicity="1" />
           <End Role="StudentSubject" Type="Self.StudentSubject" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Student">
-              <PropertyRef Name="Id" />
+              <PropertyRef Name="Identification" />
             </Principal>
             <Dependent Role="StudentSubject">
-              <PropertyRef Name="StudentId" />
+              <PropertyRef Name="Student" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_StudentSubject_SubjectId">
+        <Association Name="FK_StudentSubject_Subject">
           <End Role="Subject" Type="Self.Subject" Multiplicity="1" />
           <End Role="StudentSubject" Type="Self.StudentSubject" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Subject">
-              <PropertyRef Name="Id" />
+              <PropertyRef Name="Subject1" />
             </Principal>
             <Dependent Role="StudentSubject">
-              <PropertyRef Name="SubjectId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_TeacherSubject_SubjectId">
-          <End Role="Subject" Type="Self.Subject" Multiplicity="1" />
-          <End Role="TeacherSubject" Type="Self.TeacherSubject" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Subject">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="TeacherSubject">
-              <PropertyRef Name="SubjectId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_TeacherSubject_TeacherId">
-          <End Role="Teacher" Type="Self.Teacher" Multiplicity="1" />
-          <End Role="TeacherSubject" Type="Self.TeacherSubject" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Teacher">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="TeacherSubject">
-              <PropertyRef Name="TeacherId" />
+              <PropertyRef Name="Subject" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="ControlSchoolEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Classes" EntityType="Self.Classes" />
+          <EntitySet Name="Level" EntityType="Self.Level" />
           <EntitySet Name="Result" EntityType="Self.Result" />
+          <EntitySet Name="ResultSubjectStudent" EntityType="Self.ResultSubjectStudent" />
+          <EntitySet Name="Section" EntityType="Self.Section" />
+          <EntitySet Name="SectionLevel" EntityType="Self.SectionLevel" />
           <EntitySet Name="Student" EntityType="Self.Student" />
-          <EntitySet Name="StudentClasses" EntityType="Self.StudentClasses" />
+          <EntitySet Name="StudentLevel" EntityType="Self.StudentLevel" />
+          <EntitySet Name="StudentSection" EntityType="Self.StudentSection" />
           <EntitySet Name="StudentSubject" EntityType="Self.StudentSubject" />
           <EntitySet Name="Subject" EntityType="Self.Subject" />
-          <EntitySet Name="Teacher" EntityType="Self.Teacher" />
-          <EntitySet Name="TeacherSubject" EntityType="Self.TeacherSubject" />
-          <AssociationSet Name="fk_Classes_SubjectId" Association="Self.fk_Classes_SubjectId">
-            <End Role="Subject" EntitySet="Subject" />
-            <End Role="Classes" EntitySet="Classes" />
+          <AssociationSet Name="FK_SectionLevel_Level" Association="Self.FK_SectionLevel_Level">
+            <End Role="Level" EntitySet="Level" />
+            <End Role="SectionLevel" EntitySet="SectionLevel" />
           </AssociationSet>
-          <AssociationSet Name="fk_Classes_TeacherId" Association="Self.fk_Classes_TeacherId">
-            <End Role="Teacher" EntitySet="Teacher" />
-            <End Role="Classes" EntitySet="Classes" />
-          </AssociationSet>
-          <AssociationSet Name="fk_StudentClasses_ClassId" Association="Self.fk_StudentClasses_ClassId">
-            <End Role="Classes" EntitySet="Classes" />
-            <End Role="StudentClasses" EntitySet="StudentClasses" />
-          </AssociationSet>
-          <AssociationSet Name="fk_StudentSubject_ResultId" Association="Self.fk_StudentSubject_ResultId">
+          <AssociationSet Name="FK_ResultSubjectStudent_Result" Association="Self.FK_ResultSubjectStudent_Result">
             <End Role="Result" EntitySet="Result" />
+            <End Role="ResultSubjectStudent" EntitySet="ResultSubjectStudent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResultSubjectStudent_Student" Association="Self.FK_ResultSubjectStudent_Student">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="ResultSubjectStudent" EntitySet="ResultSubjectStudent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResultSubjectStudent_Subject" Association="Self.FK_ResultSubjectStudent_Subject">
+            <End Role="Subject" EntitySet="Subject" />
+            <End Role="ResultSubjectStudent" EntitySet="ResultSubjectStudent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SectionLevel_Section" Association="Self.FK_SectionLevel_Section">
+            <End Role="Section" EntitySet="Section" />
+            <End Role="SectionLevel" EntitySet="SectionLevel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentSection_Section" Association="Self.FK_StudentSection_Section">
+            <End Role="Section" EntitySet="Section" />
+            <End Role="StudentSection" EntitySet="StudentSection" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SectionLevel_Student" Association="Self.FK_SectionLevel_Student">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="StudentLevel" EntitySet="StudentLevel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentSection_Student" Association="Self.FK_StudentSection_Student">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="StudentSection" EntitySet="StudentSection" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentSubject_Student" Association="Self.FK_StudentSubject_Student">
+            <End Role="Student" EntitySet="Student" />
             <End Role="StudentSubject" EntitySet="StudentSubject" />
           </AssociationSet>
-          <AssociationSet Name="fk_StudentClasses_StudentId" Association="Self.fk_StudentClasses_StudentId">
-            <End Role="Student" EntitySet="Student" />
-            <End Role="StudentClasses" EntitySet="StudentClasses" />
-          </AssociationSet>
-          <AssociationSet Name="fk_StudentSubject_StudentId" Association="Self.fk_StudentSubject_StudentId">
-            <End Role="Student" EntitySet="Student" />
-            <End Role="StudentSubject" EntitySet="StudentSubject" />
-          </AssociationSet>
-          <AssociationSet Name="fk_StudentSubject_SubjectId" Association="Self.fk_StudentSubject_SubjectId">
+          <AssociationSet Name="FK_StudentSubject_Subject" Association="Self.FK_StudentSubject_Subject">
             <End Role="Subject" EntitySet="Subject" />
             <End Role="StudentSubject" EntitySet="StudentSubject" />
-          </AssociationSet>
-          <AssociationSet Name="fk_TeacherSubject_SubjectId" Association="Self.fk_TeacherSubject_SubjectId">
-            <End Role="Subject" EntitySet="Subject" />
-            <End Role="TeacherSubject" EntitySet="TeacherSubject" />
-          </AssociationSet>
-          <AssociationSet Name="fk_TeacherSubject_TeacherId" Association="Self.fk_TeacherSubject_TeacherId">
-            <End Role="Teacher" EntitySet="Teacher" />
-            <End Role="TeacherSubject" EntitySet="TeacherSubject" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -488,12 +544,11 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="ControlSchoolModelStoreContainer" CdmEntityContainer="ControlSchoolEntities">
-          <EntitySetMapping Name="Classes">
-            <EntityTypeMapping TypeName="ControlSchoolModel.Classes">
-              <MappingFragment StoreEntitySet="Classes">
+          <EntitySetMapping Name="Level">
+            <EntityTypeMapping TypeName="ControlSchoolModel.Level">
+              <MappingFragment StoreEntitySet="Level">
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
-                <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+                <ScalarProperty Name="Level1" ColumnName="Level" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -501,9 +556,34 @@
             <EntityTypeMapping TypeName="ControlSchoolModel.Result">
               <MappingFragment StoreEntitySet="Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
-                <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
                 <ScalarProperty Name="Result1" ColumnName="Result" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ResultSubjectStudent">
+            <EntityTypeMapping TypeName="ControlSchoolModel.ResultSubjectStudent">
+              <MappingFragment StoreEntitySet="ResultSubjectStudent">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Student" ColumnName="Student" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Result" ColumnName="Result" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Section">
+            <EntityTypeMapping TypeName="ControlSchoolModel.Section">
+              <MappingFragment StoreEntitySet="Section">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Section1" ColumnName="Section" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SectionLevel">
+            <EntityTypeMapping TypeName="ControlSchoolModel.SectionLevel">
+              <MappingFragment StoreEntitySet="SectionLevel">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="Section" ColumnName="Section" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -511,6 +591,7 @@
             <EntityTypeMapping TypeName="ControlSchoolModel.Student">
               <MappingFragment StoreEntitySet="Student">
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Identification" ColumnName="Identification" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Lastname1" ColumnName="Lastname1" />
                 <ScalarProperty Name="Lastname2" ColumnName="Lastname2" />
@@ -520,12 +601,21 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="StudentClasses">
-            <EntityTypeMapping TypeName="ControlSchoolModel.StudentClasses">
-              <MappingFragment StoreEntitySet="StudentClasses">
+          <EntitySetMapping Name="StudentLevel">
+            <EntityTypeMapping TypeName="ControlSchoolModel.StudentLevel">
+              <MappingFragment StoreEntitySet="StudentLevel">
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
-                <ScalarProperty Name="ClassId" ColumnName="ClassId" />
+                <ScalarProperty Name="Student" ColumnName="Student" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentSection">
+            <EntityTypeMapping TypeName="ControlSchoolModel.StudentSection">
+              <MappingFragment StoreEntitySet="StudentSection">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Student" ColumnName="Student" />
+                <ScalarProperty Name="Section" ColumnName="Section" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -533,9 +623,8 @@
             <EntityTypeMapping TypeName="ControlSchoolModel.StudentSubject">
               <MappingFragment StoreEntitySet="StudentSubject">
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
-                <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
-                <ScalarProperty Name="ResultId" ColumnName="ResultId" />
+                <ScalarProperty Name="Student" ColumnName="Student" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -543,29 +632,7 @@
             <EntityTypeMapping TypeName="ControlSchoolModel.Subject">
               <MappingFragment StoreEntitySet="Subject">
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Teacher">
-            <EntityTypeMapping TypeName="ControlSchoolModel.Teacher">
-              <MappingFragment StoreEntitySet="Teacher">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Lastname1" ColumnName="Lastname1" />
-                <ScalarProperty Name="Lastname2" ColumnName="Lastname2" />
-                <ScalarProperty Name="Gender" ColumnName="Gender" />
-                <ScalarProperty Name="Age" ColumnName="Age" />
-                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TeacherSubject">
-            <EntityTypeMapping TypeName="ControlSchoolModel.TeacherSubject">
-              <MappingFragment StoreEntitySet="TeacherSubject">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
-                <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+                <ScalarProperty Name="Subject1" ColumnName="Subject" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

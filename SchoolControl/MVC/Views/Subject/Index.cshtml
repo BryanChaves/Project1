@@ -12,7 +12,7 @@
 <table class="table table-bordered">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.Subject1)
         </th>
         <th></th>
     </tr>
@@ -21,12 +21,12 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Name)
+                @Html.DisplayFor(modelItem => item.Subject1)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                @Html.ActionLink("Edit", "Edit", new { id = item.Subject1 }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Subject1 }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Subject1 })
             </td>
         </tr>
     }

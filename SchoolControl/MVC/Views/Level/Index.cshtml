@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Data.Level>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Level1)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Level1)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { Level = item.Level1 }) |
+                @Html.ActionLink("Details", "Details", new { Level = item.Level1 }) |
+                @Html.ActionLink("Delete", "Delete", new { Level = item.Level1 })
+            </td>
+        </tr>
+    }
+
+</table>

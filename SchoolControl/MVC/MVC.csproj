@@ -7,7 +7,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{053CBAE3-7DE9-4E2D-BD51-6917EB8470C6}</ProjectGuid>
+    <ProjectGuid>{96F5A758-8B45-4CB4-AAD3-6DF2A1B526EE}</ProjectGuid>
     <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -181,16 +181,17 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\ClassesController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LevelController.cs" />
+    <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Controllers\ResultController.cs" />
-    <Compile Include="Controllers\StudentClassesController.cs" />
+    <Compile Include="Controllers\ResultSubjectStudentController.cs" />
+    <Compile Include="Controllers\SectionController.cs" />
+    <Compile Include="Controllers\SectionLevelController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
+    <Compile Include="Controllers\StudentLevelController.cs" />
+    <Compile Include="Controllers\StudentSectionController.cs" />
     <Compile Include="Controllers\StudentSubjectController.cs" />
     <Compile Include="Controllers\SubjectController.cs" />
-    <Compile Include="Controllers\TeacherController.cs" />
-    <Compile Include="Controllers\TeacherSubjectController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -203,6 +204,12 @@
     <Content Include="Content\css\bootstrap-theme.min.css" />
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\index.css" />
+    <Content Include="Content\image1.jpg" />
+    <Content Include="Content\image2.jpg" />
+    <Content Include="Content\image3.jpg" />
+    <Content Include="Content\image4.jpg" />
+    <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -286,7 +293,6 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Content\Site.css" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Images\accent.png" />
     <Content Include="Images\bullet.png" />
@@ -302,62 +308,62 @@
     <Content Include="Images\orderedList8.png" />
     <Content Include="Images\orderedList9.png" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Account\_RemoveExternalLoginsPartial.cshtml" />
-    <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Manage.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
-    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
-    <Content Include="Views\Student\Index.cshtml" />
-    <Content Include="Views\Student\Details.cshtml" />
-    <Content Include="Views\Student\Create.cshtml" />
-    <Content Include="Views\Student\Edit.cshtml" />
-    <Content Include="Views\Student\Delete.cshtml" />
-    <Content Include="Views\StudentClasses\Index.cshtml" />
-    <Content Include="Views\StudentClasses\Details.cshtml" />
-    <Content Include="Views\StudentClasses\Create.cshtml" />
-    <Content Include="Views\StudentClasses\Edit.cshtml" />
-    <Content Include="Views\StudentClasses\Delete.cshtml" />
-    <Content Include="Views\Classes\Index.cshtml" />
-    <Content Include="Views\Classes\Details.cshtml" />
-    <Content Include="Views\Classes\Create.cshtml" />
-    <Content Include="Views\Classes\Edit.cshtml" />
-    <Content Include="Views\Classes\Delete.cshtml" />
-    <Content Include="Views\Teacher\Index.cshtml" />
-    <Content Include="Views\Teacher\Details.cshtml" />
-    <Content Include="Views\Teacher\Create.cshtml" />
-    <Content Include="Views\Teacher\Edit.cshtml" />
-    <Content Include="Views\Teacher\Delete.cshtml" />
-    <Content Include="Views\TeacherSubject\Index.cshtml" />
-    <Content Include="Views\TeacherSubject\Details.cshtml" />
-    <Content Include="Views\TeacherSubject\Create.cshtml" />
-    <Content Include="Views\TeacherSubject\Edit.cshtml" />
-    <Content Include="Views\TeacherSubject\Delete.cshtml" />
-    <Content Include="Views\Subject\Index.cshtml" />
-    <Content Include="Views\Subject\Details.cshtml" />
-    <Content Include="Views\Subject\Create.cshtml" />
-    <Content Include="Views\Subject\Edit.cshtml" />
-    <Content Include="Views\Subject\Delete.cshtml" />
+    <Content Include="Views\StudentSection\Index.cshtml" />
+    <Content Include="Views\StudentSection\Details.cshtml" />
+    <Content Include="Views\StudentSection\Create.cshtml" />
+    <Content Include="Views\StudentSection\Edit.cshtml" />
+    <Content Include="Views\StudentSection\Delete.cshtml" />
+    <Content Include="Views\Section\Index.cshtml" />
+    <Content Include="Views\Section\Details.cshtml" />
+    <Content Include="Views\Section\Create.cshtml" />
+    <Content Include="Views\Section\Edit.cshtml" />
+    <Content Include="Views\Section\Delete.cshtml" />
+    <Content Include="Views\SectionLevel\Index.cshtml" />
+    <Content Include="Views\SectionLevel\Details.cshtml" />
+    <Content Include="Views\SectionLevel\Create.cshtml" />
+    <Content Include="Views\SectionLevel\Edit.cshtml" />
+    <Content Include="Views\SectionLevel\Delete.cshtml" />
+    <Content Include="Views\Level\Index.cshtml" />
+    <Content Include="Views\Level\Details.cshtml" />
+    <Content Include="Views\Level\Create.cshtml" />
+    <Content Include="Views\Level\Edit.cshtml" />
+    <Content Include="Views\Level\Delete.cshtml" />
+    <Content Include="Views\StudentLevel\Index.cshtml" />
+    <Content Include="Views\StudentLevel\Details.cshtml" />
+    <Content Include="Views\StudentLevel\Create.cshtml" />
+    <Content Include="Views\StudentLevel\Edit.cshtml" />
+    <Content Include="Views\StudentLevel\Delete.cshtml" />
     <Content Include="Views\StudentSubject\Index.cshtml" />
     <Content Include="Views\StudentSubject\Details.cshtml" />
     <Content Include="Views\StudentSubject\Create.cshtml" />
     <Content Include="Views\StudentSubject\Edit.cshtml" />
     <Content Include="Views\StudentSubject\Delete.cshtml" />
+    <Content Include="Views\Subject\Index.cshtml" />
+    <Content Include="Views\Subject\Details.cshtml" />
+    <Content Include="Views\Subject\Create.cshtml" />
+    <Content Include="Views\Subject\Edit.cshtml" />
+    <Content Include="Views\Subject\Delete.cshtml" />
+    <Content Include="Views\ResultSubjectStudent\Index.cshtml" />
+    <Content Include="Views\ResultSubjectStudent\Details.cshtml" />
+    <Content Include="Views\ResultSubjectStudent\Create.cshtml" />
+    <Content Include="Views\ResultSubjectStudent\Edit.cshtml" />
+    <Content Include="Views\ResultSubjectStudent\Delete.cshtml" />
     <Content Include="Views\Result\Index.cshtml" />
     <Content Include="Views\Result\Details.cshtml" />
     <Content Include="Views\Result\Create.cshtml" />
     <Content Include="Views\Result\Edit.cshtml" />
     <Content Include="Views\Result\Delete.cshtml" />
+    <Content Include="Views\Main\Index.cshtml" />
+    <Content Include="Views\Shared\Main.cshtml" />
+    <Content Include="Views\Student\Index.cshtml" />
+    <Content Include="Views\Student\Details.cshtml" />
+    <Content Include="Views\Student\Create.cshtml" />
+    <Content Include="Views\Student\Edit.cshtml" />
+    <Content Include="Views\Student\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -367,7 +373,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Data\Data.csproj">
-      <Project>{42baa020-8bdf-417a-9b97-b035eef1e376}</Project>
+      <Project>{5d13fbaf-e9b2-4f6f-ad7c-46a1dda262cb}</Project>
       <Name>Data</Name>
     </ProjectReference>
   </ItemGroup>
@@ -387,7 +393,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>16974</DevelopmentServerPort>
+          <DevelopmentServerPort>41605</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:4946/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

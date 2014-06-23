@@ -653,6 +653,18 @@ tr.pager td {
         }
 
 
+        #main{
+            clear:both;
+            padding:10px 10px 10px 40px;
+            background:url(../Content/image3.jpg);
+            border-radius:4px 0px 0px 0px; 
+        }
+
+
+
+        #menuconteiner{
+            text-align:center;
+        }
     /* main layout
     ----------------------------------------------------------*/
     .main-content,
@@ -696,7 +708,7 @@ tr.pager td {
             ol.round li.seven,
             ol.round li.eight,
             ol.round li.nine {
-                background: none;
+               background-color:red;
             }
 
      /* features */

@@ -24,7 +24,7 @@ namespace MVC.Controllers
         //
         // GET: /Subject/Details/5
 
-        public ActionResult Details(int id = 0)
+        public ActionResult Details(string id = null)
         {
             Subject subject = db.Subject.Find(id);
             if (subject == null)
@@ -62,7 +62,7 @@ namespace MVC.Controllers
         //
         // GET: /Subject/Edit/5
 
-        public ActionResult Edit(int id = 0)
+        public ActionResult Edit(string id = null)
         {
             Subject subject = db.Subject.Find(id);
             if (subject == null)
@@ -91,7 +91,7 @@ namespace MVC.Controllers
         //
         // GET: /Subject/Delete/5
 
-        public ActionResult Delete(int id = 0)
+        public ActionResult Delete(string id = null)
         {
             Subject subject = db.Subject.Find(id);
             if (subject == null)
@@ -106,7 +106,7 @@ namespace MVC.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(string id)
         {
             Subject subject = db.Subject.Find(id);
             db.Subject.Remove(subject);

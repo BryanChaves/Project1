@@ -12,6 +12,9 @@
 <table class="table table-bordered">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.Identification)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
         <th>
@@ -36,6 +39,9 @@
     {
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => item.Identification)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
@@ -54,9 +60,9 @@
                 @Html.DisplayFor(modelItem => item.Telephone)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                @Html.ActionLink("Edit", "Edit", new { id = item.Identification }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Identification }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Identification })
             </td>
         </tr>
     }

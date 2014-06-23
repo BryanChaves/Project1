@@ -1,0 +1,29 @@
+﻿@model Data.StudentSection
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>StudentSection</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Student1.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Student1.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Section1.Section1)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Section1.Section1)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
