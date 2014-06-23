@@ -9,6 +9,8 @@
     <meta charset="utf-8" />
     <title>@ViewBag.Title - Bryan Aplication</title>
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="@Url.Content("~/Content/css/index.css")"
+          rel="stylesheet" type="text/css" />
     <meta name="viewport" content="width=device-width" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
@@ -23,14 +25,23 @@
          
     </header>
    
-    <div id="menuconteiner">
+   
+
+
+    <nav class="navbar navbar-inverse" role="navigation">
         <ul id="menu">
-            <li>@Html.ActionLink("Student","Search","Student")</li>
+            <li>@Html.ActionLink("Student", "Search", "Student")</li>
             <li>@Html.ActionLink("Subject", "Search", "StudentSubject")</li>
             <li>@Html.ActionLink("Result", "Search", "ResultSubjectStudent")</li>
             <li>@Html.ActionLink("Section", "Search", "StudentSection")</li>
         </ul>
-    </div>
+    </nav>
+
+
+
+
+
+    
 
     <div id="main">
 

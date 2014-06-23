@@ -3,6 +3,7 @@
      background-color:aquamarine;
      width:100%;
      height:100%;
+     color:black;
 
 }
 h1{
@@ -10,10 +11,9 @@ h1{
     color:dodgerblue;
    
 
-}
-section{
-    background-color:azure;
-}
+#image{
+          background-image:url(Content/image1.jpg);
+      }
 
 
 
