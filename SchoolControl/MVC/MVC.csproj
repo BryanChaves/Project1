@@ -365,6 +365,9 @@
     <Content Include="Views\Student\Edit.cshtml" />
     <Content Include="Views\Student\Delete.cshtml" />
     <Content Include="Views\Student\Search.cshtml" />
+    <Content Include="Views\StudentSubject\Search.cshtml" />
+    <Content Include="Views\ResultSubjectStudent\Search.cshtml" />
+    <Content Include="Views\StudentSection\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

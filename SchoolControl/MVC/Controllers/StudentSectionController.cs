@@ -64,6 +64,19 @@ namespace MVC.Controllers
             return View(studentsection);
         }
 
+        //Search
+
+        public ActionResult Search(String Name)
+        {
+            var Student = from s in db.StudentSection select s;
+            if (!String.IsNullOrEmpty(Name))
+            {
+                Student = Student.Where(j => j.Student1.Name.Contains(Name));
+            }
+            return View(Student);
+        }
+
+
         //
         // GET: /StudentSection/Edit/5
 

@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Data.StudentSubject>
+
+@{
+    ViewBag.Title = "Search";
+}
+
+<h2>Search</h2>
+
+
+    @using (Html.BeginForm())
+    {
+    <p>
+
+        Search for name:@Html.TextBox("Name")<br />
+        <input type="submit" value="Search" />
+    </p>
+
+    }
+
+    </p>
+
+
+    </p>
+
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Student)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Subject)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Student)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subject)
+            </td>
+
+        </tr>
+    }
+
+</table>

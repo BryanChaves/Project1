@@ -97,6 +97,18 @@ namespace MVC.Controllers
             return View(studentsubject);
         }
 
+        //Search
+        public ActionResult Search(String Name)
+        {
+            var Student = from s in db.StudentSubject select s;
+            if (!String.IsNullOrEmpty(Name))
+            {
+                Student = Student.Where(j => j.Student1.Name.Contains(Name));
+            }
+            return View(Student);
+        }
+
+
         //
         // GET: /StudentSubject/Delete/5
 
